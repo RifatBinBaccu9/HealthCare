@@ -13,7 +13,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                     <div class="service-icon mb-4">
-                        <img src="main-site/img/images.jpg" alt="Profile"  style="width: 155px; height: 105px;" class="rounded-circle">
+                        <img src="{{asset($serviceDataView->image)}}" alt="Profile"  style="width: 155px; height: 105px;" class="rounded-circle">
                     </div>
                     <h4 class="mb-3">{{$serviceDataView->servesTitle}}</h4>
                     <p class="m-0">{{$serviceDataView->description}}</p>

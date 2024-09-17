@@ -95,9 +95,15 @@ class MainSiteController extends Controller
        $getService=Service::get();
         return view('admin-site.pages.table.serviceTable', ['ServseStor'=>$getService]);
     }
+    public function serviceDatadelete($id){
+        $dataService=Service::where(['id'=>$id])->delete();
+        return redirect()->back();
+    }
     public function serviceFrom() {
         return view('admin-site.pages.from.serviceFrom');
     }
+
+
 
 
 

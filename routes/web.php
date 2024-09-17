@@ -14,6 +14,7 @@ Route::get('/service', [MainSiteController::class, 'service']);
 Route::post('/serviceData', [MainSiteController::class, 'serviceData'])->name('serviceData');
 Route::get('/serviceDataEdit/{id}', [MainSiteController::class, 'serviceDataEdit'])->name('serviceDataEdit');
 Route::post('/serviceDataUpdate', [MainSiteController::class, 'serviceDataUpdate'])->name('serviceDataUpdate');
+Route::get('/serviceDatadelete/{id}', [MainSiteController::class, 'serviceDatadelete'])->name('serviceDatadelete');
 Route::get('/serviceFrom', [MainSiteController::class, 'serviceFrom'])->name('serviceFrom');
 Route::get('/serviceTable', [MainSiteController::class, 'serviceTable'])->name('serviceTable');
 

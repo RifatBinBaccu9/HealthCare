@@ -45,7 +45,7 @@
                     <td>{{$serviceDataView->description}}</td>
                     <td>
                       <a href="{{route('serviceDataEdit', $serviceDataView->id)}}" ><span>Update</span></a>
-                      <a href="#" ><span>Delete</span></a>
+                      <a href="{{route('serviceDatadelete', $serviceDataView->id)}}" ><span>Delete</span></a>
                   </td>
                   </tr>
                   @endforeach
