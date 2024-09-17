@@ -15,8 +15,8 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="forms-elements.html">
-              <i class="bi bi-circle"></i><span>Form Elements</span>
+            <a href="{{url('/serviceFrom')}}">
+              <i class="bi bi-circle"></i><span>Service Form</span>
             </a>
           </li>
         </ul>
@@ -28,8 +28,18 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{{url('/bookingTable')}}">
-              <i class="bi bi-circle"></i><span>Booking Tables</span>
+            <a href="{{url('/appointmentTable')}}">
+              <i class="bi bi-circle"></i><span>appointment Tables</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('/contactTable')}}">
+              <i class="bi bi-circle"></i><span>Contact Tables</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('/serviceTable')}}">
+              <i class="bi bi-circle"></i><span>Service Tables</span>
             </a>
           </li>
         </ul>
@@ -38,32 +48,11 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      <li class="nav-item">
         <a class="nav-link collapsed" href="pages-faq.html">
           <i class="bi bi-question-circle"></i>
           <span>F.A.Q</span>
         </a>
       </li><!-- End F.A.Q Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-envelope"></i>
-          <span>Contact</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
-          <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
-        </a>
-      </li><!-- End Login Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-error-404.html">

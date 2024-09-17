@@ -4,7 +4,7 @@
 @include('admin-site.common.head')
 
 <body>
-
+  @include('sweetalert::alert')
   <!-- ======= Header ======= -->
 @include('admin-site.common.header')
   <!-- End Header -->

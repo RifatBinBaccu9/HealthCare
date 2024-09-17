@@ -5,7 +5,7 @@
         <div class="container py-5">
             <div class="row justify-content-start">
                 <div class="col-lg-8 text-center text-lg-start">
-                    <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5" style="border-color: rgba(256, 256, 256, .3) !important;">Welcome To Medinova</h5>
+                    <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5" style="border-color: rgba(256, 256, 256, .3) !important;">Welcome To Health Care</h5>
                     <h1 class="display-1 text-white mb-md-4">Best Healthcare Solution In Your City</h1>
                     <div class="pt-2">
                         <a href="{{route('ContactUs')}}" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Contact Us</a>
@@ -74,78 +74,22 @@
                 <h1 class="display-4">Excellent Medical Services</h1>
             </div>
             <div class="row g-5">
+
+                @foreach ($ServseStor as $serviceDataView)
                 <div class="col-lg-4 col-md-6">
                     <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-user-md text-white"></i>
+                            <img src="main-site/img/images.jpg" alt="Profile"  style="width: 155px; height: 105px;" class="rounded-circle">
                         </div>
-                        <h4 class="mb-3">Emergency Care</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
+                        <h4 class="mb-3">{{$serviceDataView->servesTitle}}</h4>
+                        <p class="m-0">{{$serviceDataView->description}}</p>
                         <a class="btn btn-lg btn-primary rounded-pill" href="">
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-procedures text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Operation & Surgery</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
-                        <a class="btn btn-lg btn-primary rounded-pill" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-stethoscope text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Outdoor Checkup</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
-                        <a class="btn btn-lg btn-primary rounded-pill" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-ambulance text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Ambulance Service</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
-                        <a class="btn btn-lg btn-primary rounded-pill" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-pills text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Medicine & Pharmacy</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
-                        <a class="btn btn-lg btn-primary rounded-pill" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon mb-4">
-                            <i class="fa fa-2x fa-microscope text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Blood Testing</h4>
-                        <p class="m-0">Kasd dolor no lorem nonumy sit labore tempor at justo rebum rebum stet, justo elitr dolor amet sit</p>
-                        <a class="btn btn-lg btn-primary rounded-pill" href="">
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>
@@ -165,65 +109,96 @@
                     <a class="btn btn-dark rounded-pill py-3 px-5 me-3" href="{{route('DoctorTeam')}}">Find Doctor</a>
                     <a class="btn btn-outline-dark rounded-pill py-3 px-5" href="">Read More</a>
                 </div>
-                <div class="col-lg-6">
+                <dev class="col-lg-6" >
                     <div class="bg-white text-center rounded p-5">
                         <h1 class="mb-4">Book An Appointment</h1>
-                        <form>
+                        <form action="{{route('appointmentData')}}" method="POST">
+                            @csrf
                             <div class="row g-3">
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
+                                    <select name="department" class="@error('department') is-invalid @enderror form-select bg-white border-0" style="height: 55px;">
                                         <option selected>Choose Department</option>
-                                        <option value="1">Department 1</option>
-                                        <option value="2">Department 2</option>
-                                        <option value="3">Department 3</option>
+                                        <option value="Department 1">Department 1</option>
+                                        <option value="Department 2">Department 2</option>
+                                        <option value="Department 3">Department 3</option>
                                     </select>
+                                    @error('department')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
+                                    <select name="doctor" class="@error('doctor') is-invalid @enderror form-select bg-white border-0" style="height: 55px;">
                                         <option selected>Select Doctor</option>
-                                        <option value="1">Doctor 1</option>
-                                        <option value="2">Doctor 2</option>
-                                        <option value="3">Doctor 3</option>
+                                        <option value="Rifat Mia">Rifat Mia</option>
+                                        <option value="Ratul Islem">Ratul Islem</option>
+                                        <option value="Ahamed sojib">Ahamed sojib</option>
                                     </select>
+                                    @error('doctor')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
+                                    <input type="text" name="name" class="@error('name') is-invalid @enderror form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
+                                    @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
+                                    <input type="text" name="email" class="@error('email') is-invalid @enderror  form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
+                                    @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="number" class="form-control bg-light border-0" placeholder="Your Phone" style="height: 55px;">
+                                    <input type="number" name="phone" class="@error('phone') is-invalid @enderror form-control bg-light border-0" placeholder="Your Phone" style="height: 55px;">
+                                    @error('phone')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
+                                    <select name="sex" class="@error('sex') is-invalid @enderror form-select bg-light border-0" style="height: 55px;">
                                         <option selected>Select Sex</option>
-                                        <option value="1">Doctor 1</option>
-                                        <option value="2">Doctor 2</option>
-                                        <option value="3">Doctor 3</option>
+                                        <option value="Male">Male</option>
+                                        <option value="female">female</option>
+                                        <option value="custome">custome</option>
                                     </select>
+                                    @error('sex')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date" data-target-input="nearest">
-                                        <input type="text"
-                                            class="form-control bg-light border-0 datetimepicker-input"
+                                        <input type="text" name="date"
+                                            class="@error('date') is-invalid @enderror form-control bg-light border-0 datetimepicker-input"
                                             placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
+                                            @error('date')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="time" id="time" data-target-input="nearest">
-                                        <input type="text"
-                                            class="form-control bg-light border-0 datetimepicker-input"
+                                        <input type="text" name="time"
+                                            class="@error('time') is-invalid @enderror form-control bg-light border-0 datetimepicker-input"
                                             placeholder="Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
+                                            @error('time')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                     </div>
                                 </div>
+                                @if (Auth::check())
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Make An Appointment</button>
                                 </div>
+                                @else
+                                <div class="col-12">
+                                    <a href="{{route('logIn')}}" class="btn btn-primary w-100 py-3" >Make An Appointment</a>
+                                </div>   
+                                @endif
                             </div>
                         </form>
                     </div>
-                </div>
+                </dev>
             </div>
         </div>
     </div>

@@ -46,20 +46,79 @@
             <div class="row justify-content-center position-relative" style="margin-top: -200px; z-index: 1;">
                 <div class="col-lg-8">
                     <div class="bg-white rounded p-5 m-5 mb-0">
-                        <form>
+                        <form action="{{ route('contactData') }}" method="POST">
+                            @csrf
                             <div class="row g-3">
+                                <!-- Name Field -->
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
+                                    <input 
+                                        name="name" 
+                                        type="text" 
+                                        class="form-control bg-light border-0 @error('name') is-invalid @enderror" 
+                                        placeholder="Your Name" 
+                                        style="height: 55px;" 
+                                    >
+                                    @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
+                        
+                                <!-- Email Field -->
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
+                                    <input 
+                                        type="email" 
+                                        name="email" 
+                                        class="form-control bg-light border-0 @error('email') is-invalid @enderror" 
+                                        placeholder="Your Email" 
+                                        style="height: 55px;"     
+                                    >
+                                    @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
+                        
+                                <!-- Phone Field -->
                                 <div class="col-12">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Subject" style="height: 55px;">
+                                    <input 
+                                        type="text" 
+                                        name="phone" 
+                                        class="form-control bg-light border-0 @error('phone') is-invalid @enderror" 
+                                        placeholder="Your Phone" 
+                                        style="height: 55px;" 
+                                    >
+                                    @error('phone')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
+                        
+                                <!-- Subject Field -->
                                 <div class="col-12">
-                                    <textarea class="form-control bg-light border-0" rows="5" placeholder="Message"></textarea>
+                                    <input 
+                                        type="text" 
+                                        name="Subject" 
+                                        class="form-control bg-light border-0 @error('Subject') is-invalid @enderror" 
+                                        placeholder="Subject" 
+                                        style="height: 55px;" 
+                                    >
+                                    @error('Subject')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
+                        
+                                <!-- Message Field -->
+                                <div class="col-12">
+                                    <textarea 
+                                        name="message" 
+                                        class="form-control bg-light border-0 @error('message') is-invalid @enderror" 
+                                        rows="5" 
+                                        placeholder="Message" 
+                                    ></textarea>
+                                    @error('message')
+                                    <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                        
+                                <!-- Submit Button -->
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
                                 </div>
