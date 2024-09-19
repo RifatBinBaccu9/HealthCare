@@ -1,36 +1,46 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\MainSiteController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DoctorTeamController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SignupLoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 //main-site section
-Route::get('/', [MainSiteController::class, 'home'])->name('home');
-Route::get('/about', [MainSiteController::class, 'about']);
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/about', [HomeController::class, 'about']);
 
 //Services section
-Route::get('/service', [MainSiteController::class, 'service']);
-Route::post('/serviceData', [MainSiteController::class, 'serviceData'])->name('serviceData');
-Route::get('/serviceDataEdit/{id}', [MainSiteController::class, 'serviceDataEdit'])->name('serviceDataEdit');
-Route::post('/serviceDataUpdate', [MainSiteController::class, 'serviceDataUpdate'])->name('serviceDataUpdate');
-Route::get('/serviceDatadelete/{id}', [MainSiteController::class, 'serviceDatadelete'])->name('serviceDatadelete');
-Route::get('/serviceFrom', [MainSiteController::class, 'serviceFrom'])->name('serviceFrom');
-Route::get('/serviceTable', [MainSiteController::class, 'serviceTable'])->name('serviceTable');
+Route::get('/service', [ServicesController::class, 'service']);
+Route::post('/serviceData', [ServicesController::class, 'serviceData'])->name('serviceData');
+Route::get('/serviceDataEdit/{id}', [ServicesController::class, 'serviceDataEdit'])->name('serviceDataEdit');
+Route::post('/serviceDataUpdate', [ServicesController::class, 'serviceDataUpdate'])->name('serviceDataUpdate');
+Route::get('/serviceDatadelete/{id}', [ServicesController::class, 'serviceDatadelete'])->name('serviceDatadelete');
+Route::get('/serviceFrom', [ServicesController::class, 'serviceFrom'])->name('serviceFrom');
+Route::get('/serviceTable', [ServicesController::class, 'serviceTable'])->name('serviceTable');
 
-Route::get('/OurCliend', [MainSiteController::class, 'OurCliend']);
-Route::get('/doctorTeam', [MainSiteController::class, 'doctorTeam'])->name('DoctorTeam');
-Route::get('/testimonial', [MainSiteController::class, 'testimonial']);
+Route::get('/OurCliend', [HomeController::class, 'OurCliend']);
+
+//doctorTeam section
+Route::get('/doctorTeam', [DoctorTeamController::class, 'doctorTeam'])->name('DoctorTeam');
+Route::get('/doctorTeamAddFrom', [DoctorTeamController::class, 'doctorTeamAddFrom'])->name('doctorTeamAddFrom');
+Route::post('/doctorTeamData', [DoctorTeamController::class, 'doctorTeamData'])->name('doctorTeamData');
+Route::get('/doctorTeamDataList', [DoctorTeamController::class, 'doctorTeamDataList'])->name('doctorTeamDataList');
+
+Route::get('/testimonial', [HomeController::class, 'testimonial']);
 
 // appointment section
-Route::get('/appointment', [MainSiteController::class, 'appointment'])->name('Appointment');
-Route::post('/appointmentData', [MainSiteController::class, 'appointmentData'])->name('appointmentData');
-Route::get('/appointmentTable', [MainSiteController::class, 'appointmentTable'])->name('appointmentTable');
+Route::get('/appointment', [AppointmentController::class, 'appointment'])->name('Appointment');
+Route::post('/appointmentData', [AppointmentController::class, 'appointmentData'])->name('appointmentData');
+Route::get('/appointmentTable', [AppointmentController::class, 'appointmentTable'])->name('appointmentTable');
 
 // contact section
-Route::get('/contact', [MainSiteController::class, 'contact'])->name('ContactUs');
-Route::post('/contactData', [MainSiteController::class, 'contactData'])->name('contactData');
-Route::get('/contactTable', [MainSiteController::class, 'contactTable'])->name('contactTable');
+Route::get('/contact', [ContactController::class, 'contact'])->name('ContactUs');
+Route::post('/contactData', [ContactController::class, 'contactData'])->name('contactData');
+Route::get('/contactTable', [ContactController::class, 'contactTable'])->name('contactTable');
 
 //main-site-signup section
 Route::get('/signUp', [SignupLoginController::class, 'signUp'])->name('signUp');
@@ -45,4 +55,7 @@ Route::get('/logOut', [SignupLoginController::class, 'logOut'])->name('logOut');
 Route::get('/admin', [AdminController::class, 'admin'])->name('adminHome');
 
 //user-site section
-Route::get('/user', [UserController::class, 'user']);
+Route::get('/user', [UserController::class, 'user'])->name('user');
+Route::get('/userAppointmentTable', [UserController::class, 'userAppointmentTable'])->name('userAppointmentTable');
+Route::get('/userContectFrom', [UserController::class, 'userContectFrom'])->name('userContectFrom');
+Route::get('/userProfile', [UserController::class, 'userProfile'])->name('userProfile');

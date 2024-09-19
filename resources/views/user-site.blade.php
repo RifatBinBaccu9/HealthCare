@@ -4,6 +4,8 @@
 @include('user-site.common.head')
 
 <body>
+{{-- sweet alert --}}
+@include('sweetalert::alert')
 
   <!-- ======= Header ======= -->
 @include('user-site.common.header')

@@ -4,12 +4,11 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Services Froms</h1>
+      <h1>Add Services</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{route('adminHome')}}">Admin Dashboard Froms</a></li>
-          <li class="breadcrumb-item active"><a href="{{route('serviceFrom')}}" style="color: rgb(214, 11, 221);">Services Froms</a></li>
+          <li class="breadcrumb-item active"><a href="{{route('serviceFrom')}}" style="color: rgb(214, 11, 221);">Add Services</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -20,12 +19,11 @@
 
           <div class="card">
             <div class="card-body">
-              <div class="card-body p-3 p-md-4 p-xl-5">
+              <div class="card-body px-3 px-md-4 px-xl-5 py-1 py-md-3 py-xl-4">
                 <div class="row">
                   <div class="col-12">
                     <div class="mb-4">
-                      <h2 class="h3">Create Serves Data</h2>
-                      <h3 class="fs-6 fw-normal text-secondary m-0">Get started with your serves data create now</h3>
+                      <h2 class="h3 pb-3">Create Serves Data</h2>
                     </div>
                   </div>
                 </div>
@@ -34,9 +32,12 @@
 
                   <div class="row gy-3 overflow-hidden">
                     <div class="row mb-3">
-                      <label for="formFile" class="col-sm-3 col-form-label">Serves Image Upload</label>
+                      <label for="formFile" class="col-sm-3 col-form-label" style="color: rgb(236, 8, 168);">Serves Image Upload</label>
                       <div class="col-sm-9">
-                        <input class="form-control" name="image" type="file" id="formFile">
+                        <input class="@error('image') is-invalid @enderror form-control" name="image" type="file" id="formFile">
+                        @error('image')
+                        <div class="text-danger">{{ $message }}</div>
+                      @enderror
                       </div>
                     </div>
 

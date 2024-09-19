@@ -3,11 +3,84 @@
     margin-left: 20px;
 }
 .login{
-    margin-left: 5px;
-    font-size: 20px;
+    margin-left: 20px;
+    font-size: 50px;
     font-weight: 900;
     color: rgb(12, 12, 12);
 }
 .login:hover{
     color: deepskyblue;
+}
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #4e80c2; /* Header background color */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Logo Styles */
+.logo img {
+    max-height: 40px; /* Logo height */
+}
+
+/* Navigation Styles */
+.header-nav {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav .nav-item {
+    margin-left: 20px; /* Space between nav items */
+}
+
+.header-nav .nav-link {
+    color: white; /* Nav link color */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header-nav .nav-link:hover {
+    color: #FFB74D; /* Hover color */
+}
+
+/* Dropdown Styles */
+.dropdown-menu {
+    background-color: white; /* Dropdown background color */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Dropdown shadow */
+}
+
+.dropdown-item {
+    color: #333; /* Dropdown item color */
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1; /* Dropdown item hover color */
+}
+
+/* Profile Styles */
+.nav-profile {
+    position: relative;
+}
+
+.nav-profile .dropdown-menu {
+    right: 0; /* Align dropdown to the right */
+}
+
+.profile .dropdown-header {
+    background-color: #f8f8f8; /* Header background */
+    padding: 10px;
+    font-weight: bold;
+}
+
+.profile .dropdown-divider {
+    margin: 5px 0; /* Divider spacing */
+}
+.nabver{
+    list-style: none;
+    margin: 0;
 }

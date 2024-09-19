@@ -8,11 +8,6 @@
 <body>
     {{-- sweet alert --}}
     @include('sweetalert::alert')
-    
-    <!-- Topbar Start -->
-   @include('main-site.common.topbar')
-    <!-- Topbar End -->
-
 
     <!-- Navbar Start -->
     @include('main-site.common.navbar')

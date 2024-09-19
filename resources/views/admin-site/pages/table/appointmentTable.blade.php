@@ -4,12 +4,11 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Appointment Tables</h1>
+      <h1>Appointment List</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{route('adminHome')}}">Admin Dashboard Tables</a></li>
-          <li class="breadcrumb-item active"><a href="{{route('appointmentTable')}}" style="color: rgb(214, 11, 221);">Appointment Table</a></li>
+          <li class="breadcrumb-item active"><a href="{{route('appointmentTable')}}" style="color: rgb(214, 11, 221);">Appointment List</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -18,13 +17,11 @@
       <div class="row">
         <div class="col-lg-12">
 
-          <div class="card">
+          <div class="card" style="padding-top: 20px;">
             <div class="card-body">
-              <h5 class="card-title">Appointment Table</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library.</p>
 
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table class="table datatable" >
                 <thead>
                   <tr>
                     <th>

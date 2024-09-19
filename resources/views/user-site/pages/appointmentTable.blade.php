@@ -1,14 +1,14 @@
-@extends('admin-site')
-@section('admin-site')
+@extends('user-site')
+@section('user-site')
 
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Contact List</h1>
+      <h1>Appointment Data</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-          <li class="breadcrumb-item active"><a href="{{route('contactTable')}}" style="color: rgb(214, 11, 221);">Contact List</a></li>
+          <li class="breadcrumb-item active"><a href="{{route('userAppointmentTable')}}" style="color: rgb(214, 11, 221);">Appointment Data</a></li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -21,7 +21,7 @@
             <div class="card-body">
 
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table class="table datatable" >
                 <thead>
                   <tr>
                     <th>
@@ -29,19 +29,26 @@
                     </th>
                     <th>Email</th>
                     <th>Phone</th>
-                    <th>Subject</th>
-                    <th>Message</th>
+                    <th>Department</th>
+                    <th>Doctor</th>
+                    <th>Sex</th>
+                    <th>Date</th>
+                    <th>Time</th>
                   </tr>
                 </thead>
 
+                
                 <tbody>
-                  @foreach ($contactDataStor as $contactDataView)
+                  @foreach ($appointment as $appointmentView)
                   <tr>
-                    <td>{{$contactDataView->name}}</td>
-                    <td>{{$contactDataView->email}}</td>
-                    <td>{{$contactDataView->phone}}</td>
-                    <td>{{$contactDataView->Subject}}</td>
-                    <td>{{$contactDataView->message}}</td>
+                    <td>{{$appointmentView->name}}</td>
+                    <td>{{$appointmentView->phone}}</td>
+                    <td>{{$appointmentView->email}}</td>
+                    <td>{{$appointmentView->department}}</td>
+                    <td>{{$appointmentView->doctor}}</td>
+                    <td>{{$appointmentView->sex}}</td>
+                    <td>{{$appointmentView->date}}</td>
+                    <td>{{$appointmentView->time}}</td>
                   </tr>
                   @endforeach
                  </tbody>               

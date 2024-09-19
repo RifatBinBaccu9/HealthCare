@@ -2,13 +2,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
   
-    <title>Dashboard - Admin</title>
+    <title>Health Care - Hospital</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
   
     <!-- Favicons -->
-    <link href="admin-site/img/favicon.png" rel="icon">
-    <link href="admin-site/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="shortcut icon" href="/main-site/img/hospital.png" type="image/x-icon">
   
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -25,5 +24,6 @@
   
     <!-- Template Main CSS File -->
     <link href="admin-site/css/style.css" rel="stylesheet">
+    <link href="admin-site/css/custom.css" rel="stylesheet">
   
   </head>

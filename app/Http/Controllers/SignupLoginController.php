@@ -16,7 +16,7 @@ class SignupLoginController extends Controller
 }
 public function signupData(Request $req){
     $req->validate([
-     'FullName'=>'required',
+     'FullName'=>'required|max:15',
      'email'=>'required|email:rfc,dns',
      'password'=>'required',
      'password_confirmation'=>'required|same:password',
