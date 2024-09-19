@@ -5,17 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ServicesController extends Controller
 {
         //Services section
         public function service() {
             $getService=Service::get();
-            return view('main-site.pages.service',['ServseStor'=>$getService]);
+            $user=Auth::user();
+            return view('main-site.pages.service',['ServseStor'=>$getService],compact('user'));
         }
 
         public function serviceFrom() {
-            return view('admin-site.pages.from.addServiceFrom');
+            $user=Auth::user();
+            return view('admin-site.pages.from.addServiceFrom',compact('user'));
         }
         
         public function serviceData(Request $req) {
@@ -79,8 +82,9 @@ class ServicesController extends Controller
             return redirect()->route('serviceTable');
         }
         public function serviceTable() {
+            $user=Auth::user();
            $getService=Service::get();
-            return view('admin-site.pages.table.serviceTable', ['ServseStor'=>$getService]);
+            return view('admin-site.pages.table.serviceTable', ['ServseStor'=>$getService],compact('user'));
         }
         public function serviceDatadelete($id){
             $dataService=Service::where(['id'=>$id])->delete();

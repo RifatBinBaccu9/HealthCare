@@ -21,6 +21,12 @@
           <span>Add Doctor</span>
         </a>
       </li><!-- End Forms Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="{{url('/addTestimonial')}}">
+          <i class="bi bi-journal-text"></i>
+          <span>Add Testimonial</span>
+        </a>
+      </li><!-- End Forms Nav -->
 
       <li class="nav-heading">List Pages</li>
       <li class="nav-item">
@@ -47,6 +53,12 @@
         <a class="nav-link " href="{{url('/doctorTeamDataList')}}">
           <i class="bi bi-layout-text-window-reverse"></i>
           <span>Doctor List</span>
+        </a>
+      </li><!-- End Table Nav -->
+      <li class="nav-item">
+        <a class="nav-link " href="{{url('/testimonialList')}}">
+          <i class="bi bi-layout-text-window-reverse"></i>
+          <span>Testimonial List</span>
         </a>
       </li><!-- End Table Nav -->
 

@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
         // appointment section
         public function appointment() {
-            return view('main-site.pages.appointment');
+            $user=Auth::user();
+            return view('main-site.pages.appointment',compact('user'));
         }
         public function appointmentData (Request $req){
             $req->validate([
@@ -64,7 +66,8 @@ class AppointmentController extends Controller
              return redirect()->route('Appointment');
         }
            public function appointmentTable(){
+            $user=Auth::user();
             $bookingData=Booking::get();
-            return view('admin-site.pages.table.appointmentTable', ['appointment'=>$bookingData]);
+            return view('admin-site.pages.table.appointmentTable', ['appointment'=>$bookingData],compact('user'));
         }
 }

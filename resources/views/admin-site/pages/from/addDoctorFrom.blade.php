@@ -101,7 +101,7 @@
 
                     <div class="col-12">
                       <div class="d-grid">
-                        <button class="btn btn-primary btn-lg" type="submit">Create Serves Data</button>
+                        <button class="btn btn-primary btn-lg" type="submit">Create Doctor Data</button>
                       </div>
                     </div>
                   </div>

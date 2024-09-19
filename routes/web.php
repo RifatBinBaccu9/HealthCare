@@ -22,8 +22,6 @@ Route::get('/serviceDatadelete/{id}', [ServicesController::class, 'serviceDatade
 Route::get('/serviceFrom', [ServicesController::class, 'serviceFrom'])->name('serviceFrom');
 Route::get('/serviceTable', [ServicesController::class, 'serviceTable'])->name('serviceTable');
 
-Route::get('/OurCliend', [HomeController::class, 'OurCliend']);
-
 //doctorTeam section
 Route::get('/doctorTeam', [DoctorTeamController::class, 'doctorTeam'])->name('DoctorTeam');
 Route::get('/doctorTeamAddFrom', [DoctorTeamController::class, 'doctorTeamAddFrom'])->name('doctorTeamAddFrom');
@@ -52,10 +50,14 @@ Route::post('/logInData', [SignupLoginController::class, 'logInData'])->name('lo
 Route::get('/logOut', [SignupLoginController::class, 'logOut'])->name('logOut');
 
 //admin-site section
-Route::get('/admin', [AdminController::class, 'admin'])->name('adminHome');
+Route::get('/admin', [AdminController::class, 'admin'])->name('adminHome')->middleware('admin');
+Route::get('/addTestimonial', [AdminController::class, 'addTestimonial'])->name('addTestimonial');
+Route::post('/addTestimonialData', [AdminController::class, 'addTestimonialData'])->name('addTestimonialData');
+Route::get('/testimonialList', [AdminController::class, 'testimonialList'])->name('testimonialList');
+Route::get('/adminProfile', [AdminController::class, 'adminProfile'])->name('adminProfile');
 
 //user-site section
 Route::get('/user', [UserController::class, 'user'])->name('user');
-Route::get('/userAppointmentTable', [UserController::class, 'userAppointmentTable'])->name('userAppointmentTable');
 Route::get('/userContectFrom', [UserController::class, 'userContectFrom'])->name('userContectFrom');
+Route::get('/userAppointmentTable', [UserController::class, 'userAppointmentTable'])->name('userAppointmentTable');
 Route::get('/userProfile', [UserController::class, 'userProfile'])->name('userProfile');

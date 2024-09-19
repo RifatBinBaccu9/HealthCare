@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
        // contact section
        public function contact() {
-        return view('main-site.pages.contact');
+        $user=Auth::user();
+        return view('main-site.pages.contact',compact('user'));
     }
     public function contactData (Request $req){
         $req->validate([
@@ -46,8 +48,9 @@ class ContactController extends Controller
      return redirect()->back();
 }
     public function contactTable(){
+        $user=Auth::user();
         $contactData=Contact::get();
-        return view('admin-site.pages.table.contactTable',['contactDataStor'=>$contactData]);
+        return view('admin-site.pages.table.contactTable',['contactDataStor'=>$contactData],compact('user'));
     }
 }
 

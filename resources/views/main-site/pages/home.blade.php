@@ -254,19 +254,19 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="owl-carousel testimonial-carousel">
-                        @foreach ($doctorStor as $doctor)
+                        @foreach ($testimonialData as $testimonialDataView)
                     
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
-                                <img class="img-fluid rounded-circle mx-auto" src="main-site/img/testimonial-1.jpg" alt="">
+                                <img class="img-fluid rounded-circle mx-auto" src="{{asset($testimonialDataView->image)}}" alt="">
                                 <div class="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white rounded-circle" style="width: 60px; height: 60px;">
                                     <i class="fa fa-quote-left fa-2x text-primary"></i>
                                 </div>
                             </div>
-                            <p class="fs-4 fw-normal">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat. Erat dolor rebum sit ipsum.</p>
+                            <p class="fs-4 fw-normal">{{$testimonialDataView->description}}</p>
                             <hr class="w-25 mx-auto">
-                            <h3>Patient Name</h3>
-                            <h6 class="fw-normal text-primary mb-3">{{$doctor->doctorName}}</h6>
+                            <h3>{{$testimonialDataView->name}}</h3>
+                            <h6 class="fw-normal text-primary mb-3">{{$testimonialDataView->profeson}}</h6>
                         </div>
                                        
             @endforeach

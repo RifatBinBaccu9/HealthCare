@@ -31,9 +31,20 @@
                   </div>
                 </div>
               </div>
-              <form action="{{route('signup-Data')}}" method="POST">
+              <form action="{{route('signup-Data')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row gy-3 overflow-hidden">
+
+                 <!--Avatar-->    
+  
+                 <div class="mb-3">
+                  <label for="profilePicture" class="form-label">Upload Profile Picture</label>
+                  <input class="form-control @error('FullName') is-invalid @enderror" type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                  @error('FullName')
+                  <div class="text-danger">{{ $message }}</div>
+                @enderror
+              </div>
+
                   <div class="col-12">
                     <div class="form-floating mb-3">
                       <input type="text" class="form-control @error('FullName') is-invalid @enderror" name="FullName" id="FullName" placeholder="Full Name">

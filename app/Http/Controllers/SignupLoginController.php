@@ -16,18 +16,31 @@ class SignupLoginController extends Controller
 }
 public function signupData(Request $req){
     $req->validate([
+     'profilePicture'=>'required',
      'FullName'=>'required|max:15',
      'email'=>'required|email:rfc,dns',
      'password'=>'required',
      'password_confirmation'=>'required|same:password',
      'iAgree'=>'required'
     ]);
+    if(! is_dir(public_path('admin-site/img/profilePicture'))){
+        mkdir(public_path('admin-site/img/profilePicture'), 0777, true);
+      }
     $data=[
         'FullName'=>$req->FullName,
         'email'=>$req->email,
         'password'=>Hash::make($req->password),
         'iAgree'=>$req->iAgree == '1'? 1 : 0,
     ];
+    if ($req->hasFile('profilePicture')) {
+        $image = $req->file('profilePicture');
+        $name = $image->getClientOriginalName();
+        $imageName = time() . '_' . $name;
+    
+        $image->move(public_path('admin-site/img/profilePicture'), $imageName);
+    
+        $data['profilePicture'] = 'admin-site/img/profilePicture/' . $imageName;
+    } 
     User::create($data);
     Alert::success('Success sign up', 'Your sign up Success');
     return redirect()->route('logIn');
@@ -54,6 +67,6 @@ public function logInData(Request $req){
 public function logOut(){
     Auth::logOut();
     Alert::success('Success Logout', 'Your logout Success ');
-    return redirect()->back();
+    return redirect()->route('home');
 }
 }

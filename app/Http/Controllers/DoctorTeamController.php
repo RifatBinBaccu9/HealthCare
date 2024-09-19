@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\DoctorTeam;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
 
 class DoctorTeamController extends Controller
 {
     public function doctorTeam() {
+        $user=Auth::user();
         $doctorData=DoctorTeam::get();
-        return view('main-site.pages.team',['doctorStor'=>$doctorData]);
+        return view('main-site.pages.team',['doctorStor'=>$doctorData],compact('user'));
     }
 
     public function doctorTeamAddFrom() {
-        return view('admin-site.pages.from.addDoctorFrom');
+        $user=Auth::user();
+        return view('admin-site.pages.from.addDoctorFrom',compact('user'));
     }
 
        public function doctorTeamData(Request $req) {
@@ -59,7 +62,8 @@ class DoctorTeamController extends Controller
             return redirect()->back();
         }
         public function doctorTeamDataList(){
+            $user=Auth::user();
             $doctorData=DoctorTeam::get();
-            return view('admin-site.pages.table.DoctorTable',['doctorStor'=>$doctorData]);
+            return view('admin-site.pages.table.DoctorTable',['doctorStor'=>$doctorData],compact('user'));
         }
 }
