@@ -39,17 +39,17 @@
   
                  <div class="mb-3">
                   <label for="profilePicture" class="form-label">Upload Profile Picture</label>
-                  <input class="form-control @error('FullName') is-invalid @enderror" type="file" id="profilePicture" name="profilePicture" accept="image/*">
-                  @error('FullName')
+                  <input class="form-control @error('profilePicture') is-invalid @enderror" type="file" id="profilePicture" name="profilePicture" accept="image/*">
+                  @error('profilePicture')
                   <div class="text-danger">{{ $message }}</div>
                 @enderror
               </div>
 
                   <div class="col-12">
                     <div class="form-floating mb-3">
-                      <input type="text" class="form-control @error('FullName') is-invalid @enderror" name="FullName" id="FullName" placeholder="Full Name">
+                      <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="FullName" placeholder="Full Name">
                       <label for="FullName" class="form-label">Full Name</label>
-                      @error('FullName')
+                      @error('name')
                         <div class="text-danger">{{ $message }}</div>
                       @enderror
                     </div>

@@ -56,7 +56,8 @@ class ServicesController extends Controller
         }
         public function serviceDataEdit($id){
             $dataService=Service::where(['id'=>$id])->first();
-            return view('admin-site.pages.from.serviceFromUpdate',['storingService'=>$dataService]);
+            $user=Auth::user();
+            return view('admin-site.pages.from.serviceFromUpdate',['storingService'=>$dataService],compact('user'));
         }
         public function serviceDataUpdate(Request $req){
     

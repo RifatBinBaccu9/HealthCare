@@ -17,7 +17,7 @@ class SignupLoginController extends Controller
 public function signupData(Request $req){
     $req->validate([
      'profilePicture'=>'required',
-     'FullName'=>'required|max:15',
+     'name'=>'required|max:15',
      'email'=>'required|email:rfc,dns',
      'password'=>'required',
      'password_confirmation'=>'required|same:password',
@@ -27,7 +27,7 @@ public function signupData(Request $req){
         mkdir(public_path('admin-site/img/profilePicture'), 0777, true);
       }
     $data=[
-        'FullName'=>$req->FullName,
+        'name'=>$req->name,
         'email'=>$req->email,
         'password'=>Hash::make($req->password),
         'iAgree'=>$req->iAgree == '1'? 1 : 0,
@@ -45,6 +45,25 @@ public function signupData(Request $req){
     Alert::success('Success sign up', 'Your sign up Success');
     return redirect()->route('logIn');
 }
+
+public function updateProfile(Request $request)
+{
+    $user = Auth::user();
+
+    $dataup = [
+        'name' => $request->input('name'),
+        'email' => $request->input('email'),
+        'Phone' => $request->input('phone'),
+    ];
+
+    $user->update($dataup);
+
+    return redirect()->back();
+}
+
+
+
+
 
 //Login section
 public function logIn() {
@@ -64,6 +83,7 @@ public function logInData(Request $req){
     return redirect()->back();
  }
 }
+
 public function logOut(){
     Auth::logOut();
     Alert::success('Success Logout', 'Your logout Success ');

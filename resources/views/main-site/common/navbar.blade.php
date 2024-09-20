@@ -44,7 +44,7 @@
         <li class="nav-item dropdown pe-3 marg">
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                 <img src="{{asset($user->profilePicture)}}" alt="Profile" class="rounded-circle" style="height: 50px; width: 50px;">
-                <span class="d-none d-md-block dropdown-toggle ps-2">{{$user->FullName}}</span>
+                <span class="d-none d-md-block dropdown-toggle ps-2">{{$user->name}}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                 <li class="dropdown-header" style="text-align: center">

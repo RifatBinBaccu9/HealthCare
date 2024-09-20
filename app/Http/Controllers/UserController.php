@@ -24,5 +24,6 @@ class UserController extends Controller
     public function userProfile(){
         $user = Auth::user();
         return view('user-site.pages.userProfile', compact('user'));
+    
     }
 }

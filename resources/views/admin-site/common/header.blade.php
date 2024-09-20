@@ -8,6 +8,10 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
+    <li class="nav-item marg" style="margin-left: 50px; list-style: none; font-weight: 900; color:cornflowerblue;">
+      <a href="{{ url('/') }}" class="nav-link active">BACK TO > HOME</a>
+  </li>
+  
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
 
