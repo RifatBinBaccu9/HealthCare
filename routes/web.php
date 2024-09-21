@@ -62,7 +62,3 @@ Route::get('/user', [UserController::class, 'user'])->name('user');
 Route::get('/userContectFrom', [UserController::class, 'userContectFrom'])->name('userContectFrom');
 Route::get('/userAppointmentTable', [UserController::class, 'userAppointmentTable'])->name('userAppointmentTable');
 Route::get('/userProfile', [UserController::class, 'userProfile'])->name('userProfile');
-
-// Route::get('/ProfileOverview', [UserController::class, 'ProfileOverview'])->name('ProfileOverview');
-// Route::get('/ProfileEdit', [UserController::class, 'ProfileEdit'])->name('ProfileEdit');
-// Route::get('/ProfileChange', [UserController::class, 'ProfileChange'])->name('ProfileChange');

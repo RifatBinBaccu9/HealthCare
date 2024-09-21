@@ -39,9 +39,8 @@
 
                 
                 <tbody>
-                  @foreach ($appointment as $appointmentView)
+                  @foreach ($bookings as $appointmentView)
                   <tr>
-                    <td>{{$appointmentView->name}}</td>
                     <td>{{$appointmentView->phone}}</td>
                     <td>{{$appointmentView->email}}</td>
                     <td>{{$appointmentView->department}}</td>

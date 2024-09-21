@@ -49,20 +49,34 @@ public function signupData(Request $req){
 public function updateProfile(Request $request)
 {
     $user = Auth::user();
-
+    $request->validate([
+        'email'=>'email|unique:users,email,'.Auth::id(),
+    ]);
+    if(! is_dir(public_path('admin-site/img/profilePicture'))){
+                mkdir(public_path('admin-site/img/profilePicture'), 0777, true);
+              }
     $dataup = [
-        'name' => $request->input('name'),
-        'email' => $request->input('email'),
-        'Phone' => $request->input('phone'),
+        'name' => $request->name,
+        'email' => $request->email,
+        'Phone' => $request->phone,
+        'address' => $request->address,
+        'about' => $request->about,
+        'twitter' => $request->twitter,
+        'facebook' => $request->facebook,
     ];
-
+    if ($request->hasFile('profilePicture')) {
+                $image = $request->file('profilePicture');
+                $name = $image->getClientOriginalName();
+                $imageName = time() . '_' . $name;
+            
+                $image->move(public_path('admin-site/img/profilePicture'), $imageName);
+            
+                $dataup['profilePicture'] = 'admin-site/img/profilePicture/' . $imageName;
+            } 
     $user->update($dataup);
 
     return redirect()->back();
 }
-
-
-
 
 
 //Login section

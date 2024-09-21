@@ -6,7 +6,7 @@
         
     </div><!-- End Logo -->
   
-    <nav class="header-nav " style="margin-left: 80px">
+    <nav class="header-nav " style="margin-left: 180px">
         <ul class="nabver d-flex align-items-center">
   
           <li class="nav-item marg">
@@ -36,10 +36,6 @@
            <li class="nav-item marg">
             <a href="{{url('/admin')}}" class="nav-link">ADashboard</a>
             </li>
-            @else
-            <li class="nav-item marg">
-                <a href="{{url('/user')}}" class="nav-link">UDashboard</a>
-                </li>
             @endif
         <li class="nav-item dropdown pe-3 marg">
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
@@ -48,7 +44,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                 <li class="dropdown-header" style="text-align: center">
-                    <h6>{{$user->FullName}}</h6>
+                    <h6>{{$user->name}}</h6>
                     <span>{{$user->email}}</span>
                 </li>
                 <li><hr class="dropdown-divider"></li>

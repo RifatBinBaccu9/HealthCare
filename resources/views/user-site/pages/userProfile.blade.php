@@ -7,7 +7,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-          <li class="breadcrumb-item active"><a href="{{route('adminProfile')}}" style="color: rgb(214, 11, 221);">Profile</a></li>
+          <li class="breadcrumb-item active"><a href="{{route('userProfile')}}" style="color: rgb(214, 11, 221);">Profile</a></li>
         </ol>
       </nav>
     </div>
@@ -24,8 +24,8 @@
                   <h2>{{$user->name}}</h2>
                   <h3>{{$user->email}}</h3>
                   <div class="social-links mt-2">
-                    <a href="{{$user->TwitterProfile}}" class="twitter"><i class="bi bi-twitter"></i></a>
-                    <a href="{{$user->FacebookProfile}}" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="{{$user->twitter}}" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="{{$user->facebook}}" class="facebook"><i class="bi bi-facebook"></i></a>
                   </div>
                 </div>
               </div>
@@ -56,7 +56,7 @@
     
                     <div class="tab-pane fade show active profile-overview" id="profile-overview">
                       <h5 class="card-title">About</h5>
-                      <p class="small fst-italic">{{$user->About}}</p>
+                      <p class="small fst-italic">{{$user->about}}</p>
     
                       <h5 class="card-title">Profile Details</h5>
     
@@ -72,12 +72,12 @@
                       
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">Phone</div>
-                        <div class="col-lg-9 col-md-8">{{$user->Phone}}</div>
+                        <div class="col-lg-9 col-md-8">{{$user->phone}}</div>
                       </div>
                       
                       <div class="row">
                         <div class="col-lg-3 col-md-4 label">Address</div>
-                        <div class="col-lg-9 col-md-8">{{$user->Address}}</div>
+                        <div class="col-lg-9 col-md-8">{{$user->address}}</div>
                       </div>
     
                     </div>
@@ -85,15 +85,17 @@
                     <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
     
                       <!-- Profile Update Form -->
-                      <form action="{{route('updateProfile')}}" method="POST">
+                      <form action="{{route('updateProfile')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row mb-3">
-                          <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                          <label for="profilePicture" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                           <div class="col-md-8 col-lg-9">
-                            <img src="assets/img/profile-img.jpg" alt="Profile">
-                            <div class="pt-2">
-                              <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                              <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                            <img src="{{asset($user->profilePicture)}}" alt="Profile" height="130px" width="200px">
+                            <div class="mt-3" >
+                              
+                              <label  class="p-2" for="profilePicture" style="border: 1px solid rgb(35, 62, 184); background: rebeccapurple; color:#fff; border-radius: 10px; cursor: pointer;">
+                             <input style="font-size: 13px;cursor: pointer;" type="file" id="profilePicture" name="profilePicture" accept="image/*">Uplode Profile Pictuer</label>
+                          
                             </div>
                           </div>
                         </div>
@@ -115,7 +117,10 @@
                        <div class="row mb-3">
                          <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                          <div class="col-md-8 col-lg-9">
-                           <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+                           <input name="email" type="email" class="form-control  @error('email') is-invalid @enderror" id="Email" value="k.anderson@example.com">
+                           @error('email')
+                           <div class="text-danger">{{ $message }}</div>
+                         @enderror
                          </div>
                        </div>
     
@@ -148,7 +153,7 @@
                         </div>
     
                         <div class="text-center">
-                          <button type="submit" class="btn btn-primary">Save Changes</button>
+                          <button type="submit" class="btn btn-primary">Update Profile</button>
                         </div>
                       </form><!-- End Profile Edit Form -->
     

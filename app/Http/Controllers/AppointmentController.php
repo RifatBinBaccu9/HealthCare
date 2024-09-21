@@ -46,6 +46,7 @@ class AppointmentController extends Controller
              'time.required'=>'Tyep your time.',
             ]);
                 $data=[
+                    'user_id'=>Auth::user()->id,
                     'department'=>$req->department,
                     'doctor'=>$req->doctor,
                     'name'=>$req->name,
@@ -55,18 +56,14 @@ class AppointmentController extends Controller
                     'date'=>$req->date,
                     'time'=>$req->time,
                 ];
-             try {
+            
                 Booking::create($data);
         
-                Alert::success('Success', 'Your Appointment  was sent successfully.');
-        
-            } catch (\Exception $e) {
-                Alert::error('Error', 'An error occurred while sending your message.');
-            }
-             return redirect()->route('Appointment');
+             return redirect()->route('user');
         }
            public function appointmentTable(){
             $user=Auth::user();
+            // $bookings = Booking::where('user_id', Auth::user()->id)->get();
             $bookingData=Booking::get();
             return view('admin-site.pages.table.appointmentTable', ['appointment'=>$bookingData],compact('user'));
         }

@@ -14,8 +14,9 @@ class UserController extends Controller
     }
     public function userAppointmentTable(){
         $user = Auth::user();
-        $bookingData=Booking::get();
-        return view('user-site.pages.appointmentTable', ['appointment'=>$bookingData],compact('user'));
+        // $bookingData=Booking::get();
+        $bookings = Booking::where('user_id', Auth::user()->id)->get();
+        return view('user-site.pages.appointmentTable',compact('user','bookings'));
     }
     public function userContectFrom(){
         $user = Auth::user();
