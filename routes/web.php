@@ -44,6 +44,7 @@ Route::get('/contactTable', [ContactController::class, 'contactTable'])->name('c
 Route::get('/signUp', [SignupLoginController::class, 'signUp'])->name('signUp');
 Route::post('/signupData', [SignupLoginController::class, 'signupData'])->name('signup-Data');
 Route::post('/updateProfile', [SignupLoginController::class, 'updateProfile'])->name('updateProfile');
+Route::post('/updatePassword', [SignupLoginController::class, 'updatePassword'])->name('updatePassword');
 
 //main-site-login section
 Route::get('/logIn', [SignupLoginController::class, 'logIn'])->name('logIn');

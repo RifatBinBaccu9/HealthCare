@@ -46,6 +46,31 @@ public function signupData(Request $req){
     return redirect()->route('logIn');
 }
 
+//Login section
+public function logIn() {
+    return view('main-site.pages.signupLogin.login');
+}
+public function logInData(Request $req){
+ if(Auth::attempt(['email' => $req->email, 'password' => $req->password])){
+    if(Auth::user()->is_tyep == 'admin'){
+        Alert::success('Success Login', 'Your admin login Success');
+        return redirect()->route('adminHome');
+    }else{
+        Alert::success('Success Login', 'Your user login Success');
+        return redirect()->route('home');
+    }
+ }else{
+    Alert::error('Error', 'An error occurred during login.');
+    return redirect()->back();
+ }
+}
+public function logOut(){
+    Auth::logOut();
+    Alert::success('Success Logout', 'Your logout Success ');
+    return redirect()->route('home');
+}
+
+
 public function updateProfile(Request $request)
 {
     $user = Auth::user();
@@ -78,29 +103,25 @@ public function updateProfile(Request $request)
     return redirect()->back();
 }
 
+public function updatePassword(Request $req)
+{
+    $req->validate([
+        'oldpassword' => 'required',
+        'new_password' => 'required|confirmed',
+        'new_password_confirmation' => 'required',
+    ]);
+    if (Hash::check($req->oldpassword, Auth::user()->password)) {
 
-//Login section
-public function logIn() {
-    return view('main-site.pages.signupLogin.login');
-}
-public function logInData(Request $req){
- if(Auth::attempt(['email' => $req->email, 'password' => $req->password])){
-    if(Auth::user()->is_tyep == 'admin'){
-        Alert::success('Success Login', 'Your admin login Success');
-        return redirect()->route('adminHome');
-    }else{
-        Alert::success('Success Login', 'Your user login Success');
-        return redirect()->route('home');
+        User::whereId(Auth::user()->id)->update([
+            'password' => Hash::make($req->new_password),
+        ]);
+
+        return redirect()->back()->with('success', 'Password updated successfully.');
+    } else {
+        
+        return redirect()->back()->with('error', 'Old password is incorrect.');
     }
- }else{
-    Alert::error('Error', 'An error occurred during login.');
-    return redirect()->back();
- }
 }
 
-public function logOut(){
-    Auth::logOut();
-    Alert::success('Success Logout', 'Your logout Success ');
-    return redirect()->route('home');
 }
-}
+
