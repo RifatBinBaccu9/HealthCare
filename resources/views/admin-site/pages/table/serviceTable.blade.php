@@ -19,7 +19,8 @@
 
           <div class="card" style="padding-top: 20px;">
             <div class="card-body">
-
+                        <!-- Scrollable Table Container -->
+                        <div style="max-height: 400px; max-width:1000px; overflow: auto;">
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
@@ -41,9 +42,14 @@
                     <td>{{$serviceDataView->servesTitle}}</td>
                     <td>{{$serviceDataView->description}}</td>
                     <td>
-                      <a href="{{route('serviceDataEdit', $serviceDataView->id)}}" ><span>Update</span></a>
-                      <a href="{{route('serviceDatadelete', $serviceDataView->id)}}" ><span>Delete</span></a>
+                      <a href="{{ route('serviceDataEdit', $serviceDataView->id) }}" class="text-primary" title="Update">
+                          <i class="fas fa-edit"></i>
+                      </a>
+                      <a href="{{ route('serviceDatadelete', $serviceDataView->id) }}" class="text-danger" title="Delete" onclick="return confirm('Are you sure you want to delete this item?');">
+                          <i class="fas fa-trash-alt"></i>
+                      </a>
                   </td>
+                  
                   </tr>
                   @endforeach
                  </tbody>               

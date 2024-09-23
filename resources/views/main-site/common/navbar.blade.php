@@ -1,12 +1,9 @@
 <header id="header" class="header d-flex align-items-center">
     <div class="d-flex align-items-center justify-content-between">
-        {{-- <a href="index.html" class="logo d-flex align-items-center"> --}}
-            <i class="fa-solid fa-hospital" style="color: red; font-size:30px; margin:20px;"></i>
-            <span style="font-size: 30px; font-weight: 700; color: #fff;" class="d-none d-lg-block">HEALTH CARE</span>
-        
+        <img src="/main-site/img/download.png" alt="" width="150px" height="70px" style="margin-left: 60px; border-radius: 10px">
     </div><!-- End Logo -->
   
-    <nav class="header-nav " style="margin-left: 180px">
+    <nav class="header-nav " style="margin-left: 160px">
         <ul class="nabver d-flex align-items-center">
   
           <li class="nav-item marg">
@@ -31,12 +28,20 @@
             <a href="{{ url('/contact') }}" class="nav-link">Contact</a>
         </li>
 
+        
         @if (Auth::user())
            @if (Auth::user()->is_tyep == 'admin')
            <li class="nav-item marg">
-            <a href="{{url('/admin')}}" class="nav-link">ADashboard</a>
+            <a href="{{url('/admin')}}" class="nav-link">AdminPage</a>
             </li>
+            @else
+            <li class="nav-item marg">
+                <a href="{{url('/user')}}" class="nav-link">UserPage</a>
+                </li>
+            <li>
             @endif
+
+
         <li class="nav-item dropdown pe-3 marg">
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                 <img src="{{asset($user->profilePicture)}}" alt="Profile" class="rounded-circle" style="height: 50px; width: 50px;">
@@ -48,6 +53,8 @@
                     <span>{{$user->email}}</span>
                 </li>
                 <li><hr class="dropdown-divider"></li>
+
+
                 @if (Auth::user()->is_tyep == 'admin')
                 <li>
                     <a class="dropdown-item d-flex align-items-center" href="{{route('adminProfile')}}">
@@ -56,13 +63,14 @@
                     </a>
                 </li>
                 @else
-                <li>
                     <a class="dropdown-item d-flex align-items-center" href="{{route('userProfile')}}">
                         <i class="bi bi-person" style="margin-left: 15px;"></i>
                         <span>My Profile</span>
                     </a>
                 </li>
                 @endif
+
+
                 <li><hr class="dropdown-divider"></li>
     
                 <li class="nav-item">
@@ -73,7 +81,6 @@
             
             </ul>
         </li><!-- End Profile Nav -->
-
         @else
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/signUp') }}">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AddSelectDoctor;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -12,12 +13,12 @@ class AppointmentController extends Controller
         // appointment section
         public function appointment() {
             $user=Auth::user();
-            return view('main-site.pages.appointment',compact('user'));
+            $addSelect=AddSelectDoctor::get();
+            return view('main-site.pages.appointment',['select'=>$addSelect],compact('user'));
         }
         public function appointmentData (Request $req){
             $req->validate([
-                'department'=>'required|in:Department 1,Department 2,Department 3',
-                'doctor'=>'required|in:Rifat Mia,Ratul Islem,Ahamed sojib',
+                'doctor'=>'required',
                 'name'=>'required',
                 'email'=>'required|email:rfc,dns',
                 'phone'=>'required',
@@ -26,11 +27,6 @@ class AppointmentController extends Controller
                 'time'=>'required',
             ],
             [
-             'department.required' => 'Selectet the department.',
-             'department.in' => 'Selectet the department.',
-        
-             'doctor.required' => 'Selectet the doctor.',
-             'doctor.in' => 'Selectet the doctor',
     
              'name.required'=>'Tyep your name.',
     
@@ -47,7 +43,6 @@ class AppointmentController extends Controller
             ]);
                 $data=[
                     'user_id'=>Auth::user()->id,
-                    'department'=>$req->department,
                     'doctor'=>$req->doctor,
                     'name'=>$req->name,
                     'email'=>$req->email,
@@ -58,13 +53,23 @@ class AppointmentController extends Controller
                 ];
             
                 Booking::create($data);
-        
-             return redirect()->route('user');
+        dd($data);
+            //  return redirect()->route('user');
         }
            public function appointmentTable(){
             $user=Auth::user();
-            // $bookings = Booking::where('user_id', Auth::user()->id)->get();
             $bookingData=Booking::get();
             return view('admin-site.pages.table.appointmentTable', ['appointment'=>$bookingData],compact('user'));
+        }
+        public function addSelectDoctorName(){
+            $user=Auth::user();
+            return view('admin-site.pages.from.AddSelectDoctor', compact('user'));
+        }
+        public function addSelectDoctorPush(Request $req){
+            $addSelect=[
+             'name'=>$req->name,
+            ];
+            AddSelectDoctor::create($addSelect);
+            return redirect()->back();
         }
 }

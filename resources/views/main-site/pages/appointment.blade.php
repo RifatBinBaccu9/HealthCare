@@ -19,23 +19,13 @@
                         <form action="{{route('appointmentData')}}" method="POST">
                             @csrf
                             <div class="row g-3">
-                                <div class="col-12 col-sm-6">
-                                    <select name="department" class="@error('department') is-invalid @enderror form-select bg-white border-0" style="height: 55px;">
-                                        <option selected>Choose Department</option>
-                                        <option value="Department 1">Department 1</option>
-                                        <option value="Department 2">Department 2</option>
-                                        <option value="Department 3">Department 3</option>
-                                    </select>
-                                    @error('department')
-                                    <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                                
                                 <div class="col-12 col-sm-6">
                                     <select name="doctor" class="@error('doctor') is-invalid @enderror form-select bg-white border-0" style="height: 55px;">
                                         <option selected>Select Doctor</option>
-                                        <option value="Rifat Mia">Rifat Mia</option>
-                                        <option value="Ratul Islem">Ratul Islem</option>
-                                        <option value="Ahamed sojib">Ahamed sojib</option>
+                                        @foreach ($select as $addDoctor)
+                                        <option value="{{$addDoctor->name}}">{{$addDoctor->name}}</option>  
+                                        @endforeach
                                     </select>
                                     @error('doctor')
                                     <div class="text-danger">{{ $message }}</div>
@@ -44,12 +34,6 @@
                                 <div class="col-12 col-sm-6">
                                     <input type="text" name="name" class="@error('name') is-invalid @enderror form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
                                     @error('name')
-                                    <div class="text-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" name="email" class="@error('email') is-invalid @enderror  form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
-                                    @error('email')
                                     <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>

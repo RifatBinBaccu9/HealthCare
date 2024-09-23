@@ -34,6 +34,8 @@ Route::get('/testimonial', [HomeController::class, 'testimonial']);
 Route::get('/appointment', [AppointmentController::class, 'appointment'])->name('Appointment');
 Route::post('/appointmentData', [AppointmentController::class, 'appointmentData'])->name('appointmentData');
 Route::get('/appointmentTable', [AppointmentController::class, 'appointmentTable'])->name('appointmentTable');
+Route::get('/addSelectDoctorName', [AppointmentController::class, 'addSelectDoctorName']);
+Route::post('/addSelectDoctorPush', [AppointmentController::class, 'addSelectDoctorPush'])->name('addSelectDoctorPush');
 
 // contact section
 Route::get('/contact', [ContactController::class, 'contact'])->name('ContactUs');

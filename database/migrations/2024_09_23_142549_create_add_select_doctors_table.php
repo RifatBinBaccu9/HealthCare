@@ -11,16 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('add_select_doctors', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
-            $table->string('doctor');
             $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('sex');
-            $table->string('date');
-            $table->string('time');
             $table->timestamps();
         });
     }
@@ -30,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('add_select_doctors');
     }
 };

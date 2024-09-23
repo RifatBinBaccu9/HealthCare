@@ -3,14 +3,10 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="admin-site/img/logo.png" alt="">
-        <span class="d-none d-lg-block">User Dashboard</span>
+        <span class="d-none d-lg-block">HealthCareUser</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
-
-    <li class="nav-item marg" style="margin-left: 50px; list-style: none; font-weight: 900; color:cornflowerblue;">
-      <a href="{{ url('/') }}" class="nav-link active">BACK TO > HOME</a>
-  </li>
   
     <nav class="header-nav ms-auto" style="">
       <ul class="d-flex align-items-center">

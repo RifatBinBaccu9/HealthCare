@@ -18,8 +18,10 @@
         <div class="col-lg-12">
 
           <div class="card" style="padding-top: 20px;">
-            <div class="card-body">
+            <div class="card-body" >
 
+            <!-- Scrollable Table Container -->
+            <div style="max-height: 400px; max-width:1000px; overflow: auto;">
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
